@@ -323,7 +323,7 @@ setTimeout(function () {
   console.info(ready);
   if (ready==2) {
 
-    try {Run();} catch(err) {console.info(err);alert(err);alert(vs);alert(fs);}
+    Run();
   }
 },1000);
 
