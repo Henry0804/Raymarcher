@@ -288,7 +288,7 @@ globalThis.s = 0.25;
 var fs = "";
 
 var client = new XMLHttpRequest();
-client.open('GET', '/test.fs');
+client.open('GET', './test.fs');
 client.onreadystatechange = function() {
   if (client.readyState==client.DONE) {
     //Use the content.
@@ -306,7 +306,7 @@ var vs = "";
 
 
 var client2 = new XMLHttpRequest();
-client2.open('GET', '/test.vs');
+client2.open('GET', './test.vs');
 client2.onreadystatechange = function() {
 
   if (client2.readyState==client.DONE) {
