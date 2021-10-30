@@ -348,7 +348,7 @@ void main() {
       //color = vec4(0,0,0,1);
 
       //get distance to light source
-      float amount = 1.0/GetDist(lightObj,lightObj.DistanceFunction,lightData.Pos)*lightAmount,1.0*lightFadeAmount;
+      float amount = 1.0/GetDist(lightObj,lightObj.DistanceFunction,lightData.Pos)*lightAmount;//1.0*lightFadeAmount;
 
       amount = min(amount,1.0);//Making sure it isn't over 1
       amount = max(amount,0.0);//Making sure it is at least above or at 0

@@ -83,6 +83,7 @@ function InitBuffers() {
 function InitShaderProgram(vsSource, fsSource) {
   var vertexShader = LoadShader( gl.VERTEX_SHADER, vsSource);
   var fragmentShader = LoadShader( gl.FRAGMENT_SHADER, fsSource);
+  console.info(vertexShader,fragmentShader);
 
   // Create the shader program
 
@@ -120,8 +121,8 @@ function LoadShader(type, source) {
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
     console.info('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
-    gl.deleteShader(shader); //Code == copy/paste multiple times
-    return 'null'; //quotes just to annoy w3schools professionals
+    gl.deleteShader(shader); 
+    return null; 
   }
 
   return shader;
@@ -283,7 +284,7 @@ globalThis.s = 0.25;
 
 
 
-
+/*
 
 var fs = "";
 
@@ -303,7 +304,6 @@ client.send();
 
 
 var vs = "";
-
 
 var client2 = new XMLHttpRequest();
 client2.open('GET', './test.vs');
@@ -325,9 +325,22 @@ setTimeout(function () {
 
     Run();
   }
-},1000);
+},1000);*/
+
+window.fs = '';
+window.vs = '';
+var p = [];
 
 
+fetch('./test.vs').then((v) => {
+  p = p.concat(  v.text().then((t) => {window.vs = t;})  );
+})
+
+fetch('./test.fs').then((f) => {
+  p = p.concat(  f.text().then((t) => {window.fs = t;})  );
+});
+
+Promise.all(p).then((v) => {  setTimeout(() => {  Run();  },1000);  });
 
 
 let keyboard = {};
